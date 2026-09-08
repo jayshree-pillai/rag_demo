@@ -1,8 +1,8 @@
-# Enterprise RAG / CAR Architecture Demo
+# Enterprise RAG /  Architecture Demo
 
-A compact, interview-focused Python project that demonstrates the core building blocks of a production-style Retrieval-Augmented Generation (RAG) platform for credit-analysis / CAR workflows.
+A compact, interview-focused Python project that demonstrates the core building blocks of a production-style Retrieval-Augmented Generation (RAG) platform .
 
-The goal of this repo is **not** to be a full production application. It is intentionally kept small enough to explain and reproduce during a technical interview while still showing real architectural patterns: API contracts, asynchronous ingestion, vector indexing, multi-source retrieval, LangGraph orchestration, reranking, guardrails, evaluation, retry/fallback logic, and CAR-generation workflow design.
+The goal of this repo is **not** to be a full production application. It is intentionally kept small enough to explain and reproduce during a technical interview while still showing real architectural patterns: API contracts, asynchronous ingestion, vector indexing, multi-source retrieval, LangGraph orchestration, reranking, guardrails, evaluation, retry/fallback logic, and --Narrative---generation workflow design.
 
 ---
 
@@ -26,7 +26,7 @@ Router
           ↓
       Uploaded Docs Index
       Enterprise / Source Docs Index
-      Generated CAR Index
+      Generated --Narrative-- Index
           ↓
       Merge + Rerank
           ↓
@@ -131,7 +131,7 @@ Simple, recallable chunking strategies:
 - `hierarchical_chunking()`
 - `table_chunks()`
 
-The production CAR platform relies on richer document extraction, but these functions provide interview-friendly representations of the major chunking strategies.
+The production --Narrative-- platform relies on richer document extraction, but these functions provide interview-friendly representations of the major chunking strategies.
 
 ---
 
@@ -184,7 +184,7 @@ The semantic path searches three logical sources:
 
 1. user-uploaded documents
 2. enterprise/source documents used for analysis
-3. generated CAR reports
+3. generated --Narrative-- reports
 
 Uploaded documents receive a source preference before final context selection.
 
@@ -213,7 +213,7 @@ Production extensions can check:
 The factual-eval demo uses a frozen set of atomic questions and asks the same questions against:
 
 ```text
-Previous CAR text
+Previous --Narrative-- text
         vs
 Current generated answer
 ```
@@ -274,9 +274,9 @@ Narrative question
     ↓
 Atomic golden questions
     ↓
-Prev CAR answers
+Prev --Narrative-- answers
     vs
-Current CAR answers
+Current --Narrative-- answers
     ↓
 Deterministic comparison
 ```
@@ -298,16 +298,16 @@ protect individual requests at runtime.
 
 ---
 
-## Target CAR Generation Flow
+## Target --Narrative-- Generation Flow
 
-The next extension of the project is a queued CAR-generation workflow:
+The next extension of the project is a queued --Narrative---generation workflow:
 
 ```text
-POST /generate-car
+POST /generate---Narrative--
         ↓
-car-request-queue
+--Narrative---request-queue
         ↓
-CAR worker
+--Narrative-- worker
         ↓
 fan-out document ingestion
         ↓
@@ -329,10 +329,10 @@ contract validation
         ↓
 narrative assembly
         ↓
-final CAR report
+final --Narrative-- report
 ```
 
-This keeps the HTTP request short-lived while the longer CAR workflow continues asynchronously.
+This keeps the HTTP request short-lived while the longer --Narrative-- workflow continues asynchronously.
 
 ---
 
